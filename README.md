@@ -2,7 +2,7 @@
 Implementation of the popular game Minesweeper written in C# using Windows Forms.
 
 
-![Screenshot 1](https://github.com/Otasmacour/Minesweeper/assets/111227700/0887a209-9529-418e-9249-ffe91524e57d | 250x250)
+![](https://github.com/Otasmacour/Minesweeper/assets/111227700/0887a209-9529-418e-9249-ffe91524e57d = 250x250)
 This is what the game looks like before it starts.
 
 <!---->
