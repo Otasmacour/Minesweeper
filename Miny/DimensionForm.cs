@@ -23,6 +23,7 @@ public class DimensionsForm : Form
         this.Controls.Add(widthLabel);
 
         widthTextBox = new TextBox();
+        widthTextBox.TextChanged += TextBoxTextChanged;
         widthTextBox.Location = new System.Drawing.Point(120, 20);
         this.Controls.Add(widthTextBox);
 
@@ -32,6 +33,7 @@ public class DimensionsForm : Form
         this.Controls.Add(heightLabel);
 
         heightTextBox = new TextBox();
+        heightTextBox.TextChanged += TextBoxTextChanged;
         heightTextBox.Location = new System.Drawing.Point(120, 50);
         this.Controls.Add(heightTextBox);
 
@@ -50,7 +52,29 @@ public class DimensionsForm : Form
         okButton.Click += OkButton_Click;
         this.Controls.Add(okButton);
     }
-
+    private void TextBoxTextChanged(object sender, EventArgs e)
+    {
+        TextBox textBox = sender as TextBox;
+        if (int.TryParse(textBox.Text, out int value))
+        {
+            heightTextBox.Text = value.ToString();
+            widthTextBox.Text = value.ToString();
+        }
+    }
+    private void widthTextBox_TextChanged(object sender, EventArgs e)
+    {
+        if (int.TryParse(widthTextBox.Text, out int width))
+        {
+            heightTextBox.Text = width.ToString();
+        }
+    }
+    private void heightTextBox_TextChanged(object sender, EventArgs e)
+    {
+        if (int.TryParse(heightTextBox.Text, out int height))
+        {
+            widthTextBox.Text = height.ToString();
+        }
+    }
     private void OkButton_Click(object sender, EventArgs e)
     {
         if (int.TryParse(widthTextBox.Text, out int width) && int.TryParse(heightTextBox.Text, out int height) && int.TryParse(percentOfMinesTextBox.Text, out int percentOfMines))
@@ -73,7 +97,6 @@ public class DimensionsForm : Form
             MessageBox.Show("Invalid dimensions, enter valid numbers.");
         }
     }
-
     public int SelectedWidth { get; private set; }
     public int SelectedHeight { get; private set; }
     public int SelectedPercentOfMines { get; private set; }

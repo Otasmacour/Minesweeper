@@ -142,7 +142,6 @@ namespace Miny
                 game.minesLeft--;
             }
             bombCountLabel.Text = "Mines left: " + game.minesLeft.ToString();
-            //debugLabel.Text = "Exposed: " + game.numberOfExposed.ToString();
             VictoryCheck();
         }
         private void Form1_Load_1(object sender, EventArgs e)

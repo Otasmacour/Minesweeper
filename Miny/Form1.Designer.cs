@@ -55,7 +55,7 @@ namespace Miny
         {
             InitializeLabels(game.twoDArray);
             InitializeComponent(game.minesLeft);
-            InitializeDebugLabel();
+            //InitializeDebugLabel();
 
         }
         private void SetNumberLabelColor(Label label, int number)
@@ -88,15 +88,15 @@ namespace Miny
                     break;
             }
         }
-        private void InitializeDebugLabel()
-        {
-                    this.Controls.Add(debugLabel);
-                    debugLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-                    debugLabel.Font = new Font("Arial", 10, FontStyle.Bold);
-                    debugLabel.Location = new System.Drawing.Point(150, 350);
-                    debugLabel.Size = new System.Drawing.Size(200, 50);
-                    debugLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-        }
+        //private void InitializeDebugLabel()
+        //{
+        //            this.Controls.Add(debugLabel);
+        //            debugLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        //            debugLabel.Font = new Font("Arial", 10, FontStyle.Bold);
+        //            debugLabel.Location = new System.Drawing.Point(150, 350);
+        //            debugLabel.Size = new System.Drawing.Size(200, 50);
+        //            debugLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+        //}
         private void InitializeLabels(Node[,] twoDArray) 
         {
             int labelNumber = 0;
