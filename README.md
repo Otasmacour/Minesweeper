@@ -1,7 +1,8 @@
-# Implementation of the game Minesweeper written in C# using Windows Forms. I don't think a description is necessary, you all know minesweeper
+# Implementation of the game Minesweeper written in C# using Windows Forms. 
 # Controls
   - **Reveal box:** `left mouse click`
   - **Mark with a flag:** `right mouse click`
+  - I don't think a more extensive description is necessary, you all know minesweeper
 
 
 # This is what the game looks like before it starts.
