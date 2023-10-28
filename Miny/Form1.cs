@@ -31,6 +31,7 @@ namespace Miny
                     game = new Game(width, height,10);
                     InitializeMyComponents(game.twoDArray, game.minesLeft);
                     this.Controls.Remove(startButton);
+                    AdjustLabelsSize();
                 }
             }
         }
@@ -63,25 +64,30 @@ namespace Miny
             //ReSize();
             game.run = true;
             this.Controls.Remove(resetButton);
+            AdjustLabelsSize();
         }
-        protected void ReSize(object sender, EventArgs e)
+        private void AdjustLabelsSize()
         {
             int x = this.Size.Width - 10;
             int y = this.Size.Height - 60;
             int sizeOfLabel = labels[0].Size.Width;
             int newSizeOfLabel = sizeOfLabel;
-            if (((sizeOfLabel) * game.twoDArrayHeight < y  && (sizeOfLabel) * game.twoDArrayWidth < x) || ((sizeOfLabel ) * game.twoDArrayHeight > y || (sizeOfLabel ) * game.twoDArrayWidth > x))
+            if (((sizeOfLabel) * game.twoDArrayHeight < y && (sizeOfLabel) * game.twoDArrayWidth < x) || ((sizeOfLabel) * game.twoDArrayHeight > y || (sizeOfLabel) * game.twoDArrayWidth > x))
             {
-                if(y > x)
+                if (y > x)
                 {
                     newSizeOfLabel = x / game.twoDArrayHeight;
                 }
                 else
                 {
                     newSizeOfLabel = y / game.twoDArrayHeight;
-                }     
+                }
             }
             LabelsSizeUpdate(newSizeOfLabel, sizeOfLabel, game.twoDArrayHeight, game.twoDArrayWidth);
+        }
+        protected void ReSize(object sender, EventArgs e)
+        {
+            AdjustLabelsSize();
         }
         private void Form1_Load(object sender, EventArgs e)
         {

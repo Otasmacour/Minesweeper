@@ -53,10 +53,9 @@ namespace Miny
         }
         private void InitializeMyComponents(Node[,] twoDArray, int minesNumber)
         {
-            InitializeLabels(game.twoDArray);
             InitializeComponent(game.minesLeft);
+            InitializeLabels(game.twoDArray);
             //InitializeDebugLabel();
-
         }
         private void SetNumberLabelColor(Label label, int number)
         {
@@ -128,7 +127,6 @@ namespace Miny
             this.Name = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load_1);
             this.Resize += new System.EventHandler(this.ReSize);
-
             bombCountLabel.Text = "Mines left: "+minesNumber.ToString();
             bombCountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             statusStrip.Items.Add(bombCountLabel);
