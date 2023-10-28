@@ -18,10 +18,13 @@ namespace Miny
         }
         Random random = new Random();
         public Node[,] twoDArray;
+        public bool someMineExpoloded;
         public int twoDArrayHeight;
         public int twoDArrayWidth;
         public int percentOfMines;
         public int minesLeft;
+        public int numberOfExposed;
+        int numberOfminesOnMap;
         public bool run = true;
         public List<Coordinates> GetAdjacentCoordinates(Node[,] twoDArray, Coordinates coordinates, int fourOrEight)
         {
@@ -92,9 +95,28 @@ namespace Miny
             }
             return adjacentCoordinates;
         }
+        public (bool end, bool victory) VictoryCheck()
+        {
+            bool end = false;
+            bool victory = false;
+            if(numberOfExposed + numberOfminesOnMap == twoDArrayWidth * twoDArrayHeight && minesLeft == 0)
+            {
+                end = true;
+                run = false;
+                victory = true;
+            }
+            else if(someMineExpoloded)
+            {
+                end = true;
+                run = false;
+                victory = false;
+            }
+            return(end, victory);
+        }
         public void GenerateMap(int y, int x, int percentOfMines)
         {
             int numberOfMinesToSet = (x * y * percentOfMines) / 100;
+            numberOfminesOnMap = numberOfMinesToSet;
             minesLeft = numberOfMinesToSet;
             twoDArray = new Node[y, x];
             //Creating nodes

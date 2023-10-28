@@ -34,6 +34,23 @@ namespace Miny
                 }
             }
         }
+        private void VictoryCheck()
+        {
+            (bool end, bool victory) result = game.VictoryCheck();
+            if(result.end == false) { return; }
+            if(result.victory)
+            {
+                resetButton.Text = "You won! \n Reset";
+            }
+            else
+            {
+                resetButton.Text = "You lost... \n Reset";
+
+            }
+            InitializeResetButton();
+            resetButton.Location = new Point((game.twoDArrayWidth * labels[0].Size.Width / 2) - 75, this.Size.Height / 2 - 75);
+            resetButton.BringToFront();
+        }
         private void GameReset(object sender, EventArgs e)
         {
             foreach(Label label in labels)
@@ -43,6 +60,7 @@ namespace Miny
             labels.Clear();
             game = new Game(game.twoDArrayHeight, game.twoDArrayWidth, game.percentOfMines);
             InitializeLabels(game.twoDArray);
+            //ReSize();
             game.run = true;
             this.Controls.Remove(resetButton);
         }
@@ -94,16 +112,12 @@ namespace Miny
                     node.marked = false;
                     l.Image = null;
                     game.minesLeft++;
-                    
                 }
                 if (node.mine)
                 {
                     l.Image = Properties.Resources.mine;
                     l.Image = ResizeImage(Properties.Resources.mine, l.Width, l.Height);
-                    game.run = false;
-                    InitializeResetButton();
-                    resetButton.Location = new Point((game.twoDArrayWidth * labels[0].Size.Width / 2) - 75, this.Size.Height / 2 - 75);
-                    resetButton.BringToFront();
+                    game.someMineExpoloded = true;
                 }
                 else
                 {
@@ -115,6 +129,7 @@ namespace Miny
                     //}
                 }
                 node.exposed = true;
+                game.numberOfExposed++;
             }
             else if (e.Button == MouseButtons.Right && node.marked == false && node.exposed == false)
             {
@@ -124,6 +139,7 @@ namespace Miny
                 game.minesLeft--;
             }
             bombCountLabel.Text = "Mines left: " + game.minesLeft.ToString();
+            VictoryCheck();
         }
         private void Form1_Load_1(object sender, EventArgs e)
         {

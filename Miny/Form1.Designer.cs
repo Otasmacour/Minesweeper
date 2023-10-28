@@ -42,7 +42,6 @@ namespace Miny
         }
         private void InitializeResetButton()
         {
-            resetButton.Text = "Reset";
             resetButton.Size = new Size(150, 60);
             resetButton.BackColor = Color.White; 
             resetButton.ForeColor = Color.Black; 
