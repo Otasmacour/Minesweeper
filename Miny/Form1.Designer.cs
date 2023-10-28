@@ -57,6 +57,36 @@ namespace Miny
             InitializeLabels(game.twoDArray);
             InitializeComponent(game.minesLeft);
         }
+        private void SetNumberLabelColor(Label label, int number)
+        {
+            switch (number)
+            {
+                case 1:
+                    label.ForeColor = Color.Blue;
+                    break;
+                case 2:
+                    label.ForeColor = Color.Green;
+                    break;
+                case 3:
+                    label.ForeColor = Color.Red;
+                    break;
+                case 4:
+                    label.ForeColor = Color.Purple;
+                    break;
+                case 5:
+                    label.ForeColor = Color.Orange;
+                    break;
+                case 6:
+                    label.ForeColor = Color.Brown;
+                    break;
+                case 7:
+                    label.ForeColor = Color.Purple;
+                    break;
+                case 8:
+                    label.ForeColor = Color.Black;
+                    break;
+            }
+        }
         private void InitializeLabels(Node[,] twoDArray) 
         {
             int labelNumber = 0;
@@ -66,16 +96,16 @@ namespace Miny
                 { 
                     Label l = new Label();
                     labels.Add(l);
-                    twoDArray[y,x].label = l;
+                    Node node = twoDArray[y, x];
+                    node.label = l;
                     this.Controls.Add(l);
                     l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
                     l.Font = new Font("Arial", 16, FontStyle.Bold);
                     l.Location = new System.Drawing.Point(y * 50, x * 50);
                     l.Size = new System.Drawing.Size(50, 50);
-                    l.TabIndex = 1;
                     l.Tag = labelNumber;
                     l.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-                    l.Text = "";
+                    SetNumberLabelColor(l, node.numberOfMinesAround);
                     l.Click += new EventHandler((sender, e) => label1_Click(sender, (MouseEventArgs)e));
                     labelNumber++;
                 }
@@ -84,9 +114,6 @@ namespace Miny
         private void InitializeComponent(int minesNumber)
         {
             this.SuspendLayout();
-            // 
-            // Form1
-            // 
             this.ClientSize = new System.Drawing.Size(500, 520);
             this.Name = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load_1);
