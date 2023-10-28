@@ -1,7 +1,8 @@
 # Minesweeper
 Implementation of the game Minesweeper written in C# using Windows Forms.
 
-![Screenshot 1](https://github.com/Otasmacour/Minesweeper/assets/111227700/0887a209-9529-418e-9249-ffe91524e57d "Popisek obrázku") {width=250px height=250px}
+![Screenshot 1](https://github.com/Otasmacour/Minesweeper/assets/111227700/0887a209-9529-418e-9249-ffe91524e57d =250x250)
+
 
 <!---->
 
