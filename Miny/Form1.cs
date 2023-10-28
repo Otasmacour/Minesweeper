@@ -128,8 +128,11 @@ namespace Miny
                     //    game.Wawe(node);
                     //}
                 }
-                node.exposed = true;
-                game.numberOfExposed++;
+                if(node.exposed == false)
+                {
+                    node.exposed = true;
+                    game.numberOfExposed++;
+                }
             }
             else if (e.Button == MouseButtons.Right && node.marked == false && node.exposed == false)
             {
@@ -139,6 +142,7 @@ namespace Miny
                 game.minesLeft--;
             }
             bombCountLabel.Text = "Mines left: " + game.minesLeft.ToString();
+            //debugLabel.Text = "Exposed: " + game.numberOfExposed.ToString();
             VictoryCheck();
         }
         private void Form1_Load_1(object sender, EventArgs e)

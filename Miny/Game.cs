@@ -99,7 +99,7 @@ namespace Miny
         {
             bool end = false;
             bool victory = false;
-            if(numberOfExposed + numberOfminesOnMap == twoDArrayWidth * twoDArrayHeight && minesLeft == 0)
+            if((numberOfExposed + numberOfminesOnMap == twoDArrayWidth * twoDArrayHeight) && minesLeft == 0)
             {
                 end = true;
                 run = false;
