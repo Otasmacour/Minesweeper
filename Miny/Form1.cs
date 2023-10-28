@@ -32,6 +32,7 @@ namespace Miny
                     InitializeMyComponents(game.twoDArray, game.minesLeft);
                     this.Controls.Remove(startButton);
                     AdjustLabelsSize();
+                    this.BackgroundImage = null;
                 }
             }
         }

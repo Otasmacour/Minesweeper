@@ -16,14 +16,6 @@ namespace Miny
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
         private void LabelsSizeUpdate(int newSize, int previousSize,  int twoDArrayHeight, int twoDArrayWidth)
         {
             if(newSize == previousSize) { return; }
@@ -132,7 +124,6 @@ namespace Miny
             statusStrip.Items.Add(bombCountLabel);
             statusStrip.Dock = DockStyle.Bottom;
             this.Controls.Add(statusStrip);
-
             PictureBox pictureBox = new PictureBox();
             pictureBox.Location = new Point(40, 40); 
             pictureBox.Size = new Size(100, 100); 
@@ -141,7 +132,16 @@ namespace Miny
         private void InitializeGame()
         {
             startButton.Text = "Start Game";
-            startButton.Location = new System.Drawing.Point(100, 100);
+            this.ClientSize = new System.Drawing.Size(500, 520);
+            int centerX = (this.ClientSize.Width - startButton.Width) / 2;
+            int centerY = (this.ClientSize.Height - startButton.Height) / 2;
+            int buttonLocationX = centerX - 64;
+            int buttonLocationY = centerY - 18;
+            startButton.Location = new Point(buttonLocationX, buttonLocationY);
+            startButton.Size = new Size(200, 50);
+            Font buttonFont = new Font("Arial", 16, FontStyle.Bold);
+            startButton.Font = buttonFont;
+            this.BackgroundImage = Properties.Resources.background;
             startButton.Click += StartButton_Click;
             this.Controls.Add(startButton);
         }
