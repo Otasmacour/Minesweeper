@@ -1,6 +1,5 @@
-# Minesweeper
 Implementation of the game Minesweeper written in C# using Windows Forms.
-
+I don't think a description is necessary, you all know minesweeper
 ![Screenshot 1]( https://github.com/Otasmacour/Minesweeper/assets/111227700/0887a209-9529-418e-9249-ffe91524e57d)
 # This is what the game looks like before it starts.
 
