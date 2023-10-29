@@ -36,6 +36,18 @@ namespace Miny
                 }
             }
         }
+        private void RevealingAllMines()
+        {
+            foreach (Label label in labels)
+            {
+                Node node = game.GetNode(int.Parse(label.Tag.ToString()));
+                if (node.mine)
+                {
+                    label.Image = Properties.Resources.mine;
+                    label.Image = ResizeImage(Properties.Resources.mine, label.Width, label.Height);
+                }
+            }
+        }
         private void VictoryCheck()
         {
             (bool end, bool victory) result = game.VictoryCheck();
@@ -46,6 +58,7 @@ namespace Miny
             }
             else
             {
+                RevealingAllMines();
                 resetButton.Text = "You lost... \n Reset";
 
             }
@@ -62,7 +75,6 @@ namespace Miny
             labels.Clear();
             game = new Game(game.twoDArrayHeight, game.twoDArrayWidth, game.percentOfMines);
             InitializeLabels(game.twoDArray);
-            //ReSize();
             game.run = true;
             this.Controls.Remove(resetButton);
             AdjustLabelsSize();
@@ -122,8 +134,6 @@ namespace Miny
                 }
                 if (node.mine)
                 {
-                    l.Image = Properties.Resources.mine;
-                    l.Image = ResizeImage(Properties.Resources.mine, l.Width, l.Height);
                     game.someMineExpoloded = true;
                 }
                 else
