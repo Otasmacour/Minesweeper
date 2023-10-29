@@ -28,7 +28,7 @@ namespace Miny
                     int width = dimensionsForm.SelectedWidth;
                     int height = dimensionsForm.SelectedHeight;
                     int percentOfMines = dimensionsForm.SelectedPercentOfMines;
-                    game = new Game(width, height,10);
+                    game = new Game(width, height,percentOfMines);
                     InitializeMyComponents(game.twoDArray, game.minesLeft);
                     this.Controls.Remove(startButton);
                     AdjustLabelsSize();
