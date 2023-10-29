@@ -19,6 +19,6 @@
 
 
 # This is what the game over screen looks like.
-![Screenshot 4](https://github.com/Otasmacour/Minesweeper/assets/111227700/1a03a2b8-80c2-4401-9f9a-be4be3d17930)
+![Screenshot 29 10 2023 18_11_55](https://github.com/Otasmacour/Minesweeper/assets/111227700/d2446eed-e68c-4341-a225-41fe88b000ab)
 
 
