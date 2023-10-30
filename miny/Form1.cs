@@ -78,6 +78,7 @@ namespace Miny
             game.run = true;
             this.Controls.Remove(resetButton);
             AdjustLabelsSize();
+            bombCountLabel.Text = "Mines left: " + game.minesLeft.ToString();
         }
         private void AdjustLabelsSize()
         {
