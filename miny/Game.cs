@@ -168,34 +168,41 @@ namespace Miny
                 }
             }
         }
-        //public void Wawe(Node node)
-        //{
-        //    List<Node> result = new List<Node>();
-        //    Queue<Node> queue = new Queue<Node>();
-        //    result.Add(node);
-        //    queue.Enqueue(node);
-        //    while (queue.Count > 0)
-        //    {
-        //        Node current = queue.Dequeue();
-        //        List<Coordinates> adjacentCoordinates = GetAdjacentCoordinates(twoDArray, current.coordinates, 8);
-        //        foreach(Coordinates adjacent in adjacentCoordinates)
-        //        {
-        //            Node adjacentNode = twoDArray[adjacent.y, adjacent.x];
-        //            if (adjacentNode.numberOfMinesAround == 0 && result.Contains(adjacentNode) == false && adjacentNode.mine == false)
-        //            {
-        //                result.Add(adjacentNode);
-        //                queue.Enqueue(adjacentNode);
-        //            }
-        //        }
-        //    }
-        //    foreach(Node n in result)
-        //    {
-        //        if(n.numberOfMinesAround == 0)
-        //        {
-        //            n.label.Text = "0";
-        //        }
-        //    }
-        //}
+        public void Wawe(Node node)
+        {
+            List<Node> result = new List<Node>();
+            Queue<Node> queue = new Queue<Node>();
+            result.Add(node);
+            queue.Enqueue(node);
+            while (queue.Count > 0)
+            {
+                Node current = queue.Dequeue();
+                List<Coordinates> adjacentCoordinates = GetAdjacentCoordinates(twoDArray, current.coordinates, 8);
+                foreach (Coordinates adjacent in adjacentCoordinates)
+                {
+                    Node adjacentNode = twoDArray[adjacent.y, adjacent.x];
+                    if(result.Contains(adjacentNode) == false && adjacentNode.mine == false)
+                    {
+                        if (adjacentNode.numberOfMinesAround == 0 )
+                        {
+                            result.Add(adjacentNode);
+                            queue.Enqueue(adjacentNode);
+                        }
+                        else
+                        {
+                            result.Add(adjacentNode);
+                        }
+                    }
+                    
+                }
+            }
+            foreach (Node n in result)
+            {
+                n.label.Text = n.numberOfMinesAround.ToString();
+                n.exposed = true;
+                numberOfExposed++;
+            }
+        }
         public Node GetNode(int order)
         {
             int y = order / twoDArrayWidth;

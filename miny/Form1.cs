@@ -140,10 +140,10 @@ namespace Miny
                 {
                     l.BackColor = Color.White;
                     l.Text = node.numberOfMinesAround.ToString();
-                    //if(node.numberOfMinesAround == 0)
-                    //{
-                    //    game.Wawe(node);
-                    //}
+                    if (node.numberOfMinesAround == 0)
+                    {
+                        game.Wawe(node);
+                    }
                 }
                 if(node.exposed == false)
                 {
@@ -159,6 +159,7 @@ namespace Miny
                 game.minesLeft--;
             }
             bombCountLabel.Text = "Mines left: " + game.minesLeft.ToString();
+            //debugLabel.Text = game.numberOfExposed.ToString();
             VictoryCheck();
         }
         private void Form1_Load_1(object sender, EventArgs e)
