@@ -145,7 +145,13 @@ namespace Miny
                     l.Text = node.numberOfMinesAround.ToString();
                     if (node.numberOfMinesAround == 0)
                     {
-                        game.Wawe(node);
+                        List<Node> nodesToExpose = game.Wawe(node);
+                        foreach(Node nodeToExpose in nodesToExpose)
+                        {
+                            nodeToExpose.label.Text = nodeToExpose.numberOfMinesAround.ToString();
+                            nodeToExpose.exposed = true;
+                            game.numberOfExposed++;
+                        }
                     }
                 }
                 if(node.exposed == false)

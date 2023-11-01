@@ -168,7 +168,7 @@ namespace Miny
                 }
             }
         }
-        public void Wawe(Node node)
+        public List<Node> Wawe(Node node)
         {
             List<Node> result = new List<Node>();
             Queue<Node> queue = new Queue<Node>();
@@ -196,12 +196,7 @@ namespace Miny
                     
                 }
             }
-            foreach (Node n in result)
-            {
-                n.label.Text = n.numberOfMinesAround.ToString();
-                n.exposed = true;
-                numberOfExposed++;
-            }
+            return result;
         }
         public Node GetNode(int order)
         {
