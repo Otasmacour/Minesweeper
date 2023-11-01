@@ -68,7 +68,8 @@ namespace Miny
         }
         private void GameReset(object sender, EventArgs e)
         {
-            foreach(Label label in labels)
+            
+            foreach (Label label in labels)
             {
                 this.Controls.Remove(label);
             }
@@ -79,6 +80,7 @@ namespace Miny
             this.Controls.Remove(resetButton);
             AdjustLabelsSize();
             bombCountLabel.Text = "Mines left: " + game.minesLeft.ToString();
+            
         }
         private void AdjustLabelsSize()
         {
@@ -152,12 +154,21 @@ namespace Miny
                     game.numberOfExposed++;
                 }
             }
-            else if (e.Button == MouseButtons.Right && node.marked == false && node.exposed == false)
+            else if (e.Button == MouseButtons.Right && node.exposed == false)
             {
-                node.marked = true;
-                l.Image = Properties.Resources.flag;
-                l.Image = ResizeImage(Properties.Resources.flag, l.Width, l.Height);
-                game.minesLeft--;
+                if(node.marked)
+                {
+                    node.marked = false;
+                    l.Image = null;
+                    game.minesLeft++;
+                }
+                else
+                {
+                    node.marked = true;
+                    l.Image = Properties.Resources.flag;
+                    l.Image = ResizeImage(Properties.Resources.flag, l.Width, l.Height);
+                    game.minesLeft--;
+                }
             }
             bombCountLabel.Text = "Mines left: " + game.minesLeft.ToString();
             //debugLabel.Text = game.numberOfExposed.ToString();
