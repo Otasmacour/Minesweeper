@@ -139,25 +139,26 @@ namespace Miny
                 {
                     game.someMineExpoloded = true;
                 }
-                else
+                else if(node.exposed == false)
                 {
-                    l.BackColor = Color.White;
-                    l.Text = node.numberOfMinesAround.ToString();
                     if (node.numberOfMinesAround == 0)
                     {
                         List<Node> nodesToExpose = game.Wawe(node);
-                        foreach(Node nodeToExpose in nodesToExpose)
+                        foreach (Node nodeToExpose in nodesToExpose)
                         {
-                            nodeToExpose.label.Text = nodeToExpose.numberOfMinesAround.ToString();
                             nodeToExpose.exposed = true;
                             game.numberOfExposed++;
+                            nodeToExpose.label.Text = nodeToExpose.numberOfMinesAround.ToString();
+                            l.BackColor = Color.White;
                         }
                     }
-                }
-                if(node.exposed == false)
-                {
-                    node.exposed = true;
-                    game.numberOfExposed++;
+                    else
+                    {
+                        node.exposed = true;
+                        game.numberOfExposed++;
+                        l.Text = node.numberOfMinesAround.ToString();
+                        l.BackColor = Color.White;
+                    }
                 }
             }
             else if (e.Button == MouseButtons.Right && node.exposed == false)

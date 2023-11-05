@@ -99,7 +99,7 @@ namespace Miny
         {
             bool end = false;
             bool victory = false;
-            if((numberOfExposed + numberOfminesOnMap == twoDArrayWidth * twoDArrayHeight) && minesLeft == 0)
+            if ((numberOfExposed + numberOfminesOnMap == twoDArrayWidth * twoDArrayHeight) && minesLeft == 0)
             {
                 end = true;
                 run = false;
@@ -181,7 +181,7 @@ namespace Miny
                 foreach (Coordinates adjacent in adjacentCoordinates)
                 {
                     Node adjacentNode = twoDArray[adjacent.y, adjacent.x];
-                    if(result.Contains(adjacentNode) == false && adjacentNode.mine == false)
+                    if(result.Contains(adjacentNode) == false && adjacentNode.mine == false && adjacentNode.exposed == false)
                     {
                         if (adjacentNode.numberOfMinesAround == 0 )
                         {
