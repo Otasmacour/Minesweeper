@@ -14,7 +14,7 @@
 
 
 
-# This is what the you win screen looks like.
+# This is what the win screen looks like.
 ![Screenshot 3](https://github.com/Otasmacour/Minesweeper/assets/111227700/3bf39415-67a4-4468-98e1-fc7efe905b22)
 
 
